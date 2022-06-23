@@ -73,6 +73,27 @@
       #button:active {   
         background-color: #555; 
       } 
+      .up-btn {
+          background-color: #444; /*Цвет фона*/
+          color: #fff; /*Цвет текста в кнопке*/
+          padding: 20px; /*Внутренний отступ*/
+
+          position: fixed; /*Фиксированное позиционирование*/
+          bottom: 20px; /*Снизу*/
+          right: 20px; /*Справа*/
+          cursor: pointer; /*«Рука» при наведении*/
+
+          opacity: 0; /*Прозрачность 0%*/
+          visibility: hidden; /*Видимость на странице*/
+
+          transition: .3s all; /*Плавность изменения 3 миллисекунды*/
+      }
+
+      /*Активный класс*/
+      .up-btn.is-show {
+          opacity: 1; /*Прозрачность 100%*/
+          visibility: visible; /*Видимость на странице*/
+      }
     </style>
   </head>
   <body>
@@ -123,7 +144,7 @@
           </p>
           <p>
             <a href="#Projects" class="btn btn-primary my-2">Проекты</a>
-            <a href="#About" class="btn btn-secondary my-2">Обо мне</a>
+            <a href="#About" class="btn btn-secondary my-2">Навыки</a>
           </p>
         </div>
       </div>
@@ -259,10 +280,13 @@
 
     <a name="About"></a>
     <h1 style="text-align: center;">Текущее место получения образования</h1>
+    <div style="margin: 0 auto; width: 70%">
+    <p>МКП сегодня – это современное, динамично развивающееся учреждение среднего специального образования, полностью соответствующее запросам потребителей. В колледже разработан весь необходимый инструментарий обеспечения качества образования, который предполагает учёт интересов работодателей, учащихся и персонала колледжа.    </p>
+    <p>Материально-техническая база Минского колледжа предпринимательства сегодня – это современное семиэтажное здание с собственной котельной, современной библиотекой, медицинским кабинетом, преподавательской и методическим кабинетом, административными кабинетами. Занятия проводятся в 35 учебных кабинетах и лабораториях, 10 учебно-вычислительных центрах. Все аудитории оснащены компьютерами и мультимедийными проекторами, информационными стендами и учебно-методическими комплексами.    </p>
+  </div>
     <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Aed95257cdb4e71bbb6cde73c95ea57e0875ad8bdcf79eadf8d7630d2780b8dd1&amp;source=constructor" width="100%" height="400" frameborder="0"></iframe>
     
-    <br>
-    <a id="button"><img src="./img/arrow.png"></a>
+    <div class="up-btn js-scroll-top">Up</div>
 
     <div class="container">
       <footer
@@ -305,20 +329,6 @@
       </footer>
     </div>
     <script>
-      jQuery(document).ready(function() {
-        var btn = $('#button');  
-        $(window).scroll(function() {     
-          if ($(window).scrollTop() > 300) {
-            btn.addClass('show');
-          } else {
-            btn.removeClass('show');
-          }
-        });
-        btn.on('click', function(e) {
-          e.preventDefault();
-          $('html, body').animate({scrollTop:0}, '300');
-        });
-      });
 
 
       
@@ -328,6 +338,22 @@
           $(this).attr('width', '250px');  
           $(this).attr('height', '250px');       
         })
+      });
+
+
+
+      $('.js-scroll-top').click(function() {
+        $('html,body').animate({
+            scrollTop: 0
+          }, 1000);
+      });
+
+      $(window).scroll(function() {
+        if ($(window).scrollTop() > 200) {
+          $('.js-scroll-top').addClass('is-show');
+        } else {
+          $('.js-scroll-top').removeClass('is-show');
+        }
       });
     </script>
   </body>
